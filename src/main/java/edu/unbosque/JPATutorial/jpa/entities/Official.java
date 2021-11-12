@@ -6,13 +6,13 @@ import javax.persistence.*;
 @Table(name = "Official") // Optional
 @NamedQueries({
         @NamedQuery(name = "Official.findByName",
-                query = "SELECT a FROM Author a WHERE a.name = :name")
+                query = "SELECT a FROM Official a WHERE a.name = :name")
 })
 
 public class Official {
 
     @Id
-    @JoinColumn(name = "username")
+    @JoinColumn(name = "username",table="UserApp")
     @Column(name = "username")
     private String username;
 
