@@ -10,7 +10,22 @@ import javax.persistence.*;
 })
 
 public class Visit {
+    // ---------Constructrores_______________
 
+
+    public Visit() {
+    }
+
+    public Visit(String visit_id, String created_at, String type, String description, String vet_id, String pet_id) {
+        this.visit_id = visit_id;
+        this.created_at = created_at;
+        this.type = type;
+        this.description = description;
+        this.vet_id = vet_id;
+        this.pet_id = pet_id;
+    }
+
+    // --------- Columnas___________________
     @Id
     @Column(name = "visit_id",unique = true)
     private String visit_id;

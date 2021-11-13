@@ -10,7 +10,31 @@ import javax.persistence.*;
 })
 
 public class Owner {
+    // ---------Constructrores_______________
 
+
+    public Owner() {
+    }
+
+    public Owner(String name) {
+        this.name = name;
+    }
+
+    public Owner(String username, String person_id, String name, String address, String neghborhood) {
+        this.username = username;
+        this.person_id = person_id;
+        this.name = name;
+        this.address = address;
+        this.neghborhood = neghborhood;
+    }
+
+    public Owner(String name, String address, String neghborhood) {
+        this.name = name;
+        this.address = address;
+        this.neghborhood = neghborhood;
+    }
+
+    // --------- Columnas_______________
     @Id
     @JoinColumn(name = "username",table="UserApp")
     @Column(name = "username")

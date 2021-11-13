@@ -11,7 +11,24 @@ import java.util.List;
                 query = "SELECT a FROM UserApp a WHERE a.username = :username")
 })
 public class UserApp {
+    // ---------Constructrores_______________
 
+
+    public UserApp() {
+    }
+
+    public UserApp(String email) {
+        this.email = email;
+    }
+
+    public UserApp(String username, String pasword, String email, String role) {
+        this.username = username;
+        this.pasword = pasword;
+        this.email = email;
+        this.role = role;
+    }
+
+    // --------- Columnas___________________
     @Id
     @Column(name = "username")
     private String username;

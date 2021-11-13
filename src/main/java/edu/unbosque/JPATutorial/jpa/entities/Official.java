@@ -10,7 +10,22 @@ import javax.persistence.*;
 })
 
 public class Official {
+    // --------- Constructrores_______________
 
+
+    public Official() {
+    }
+
+    public Official(String name) {
+        this.name = name;
+    }
+
+    public Official(String username, String name) {
+        this.username = username;
+        this.name = name;
+    }
+
+    // --------- Columnas_______________
     @Id
     @JoinColumn(name = "username",table="UserApp")
     @Column(name = "username")

@@ -48,9 +48,7 @@ public class AuthorRepositoryImpl implements AuthorRepository {
         Author author = entityManager.find(Author.class, id);
         if (author != null) {
             try {
-
                 entityManager.getTransaction().begin();
-
                 author.getBooks().forEach(book -> {
                     entityManager.remove(book);
                 });

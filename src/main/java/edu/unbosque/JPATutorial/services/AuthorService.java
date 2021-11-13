@@ -36,9 +36,7 @@ public class AuthorService {
                     author.getBooks().size()
             ));
         }
-
         return authorsPOJO;
-
     }
 
     public Author saveAuthor(String name) {

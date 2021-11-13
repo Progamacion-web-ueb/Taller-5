@@ -9,12 +9,38 @@ import javax.persistence.*;
                 query = "SELECT a FROM Pet a WHERE a.name = :name")
 })
 public class Pet {
+    // ---------Constructrores_______________
 
+
+    public Pet() {
+    }
+
+    public Pet(String pet_id, String microchip, String name, String species, String race, String size, String sex, String pircture, String owner_id) {
+        this.pet_id = pet_id;
+        this.microchip = microchip;
+        this.name = name;
+        this.species = species;
+        this.race = race;
+        this.size = size;
+        this.sex = sex;
+        this.pircture = pircture;
+        this.owner_id = owner_id;
+    }
+
+    public Pet(String name, String species, String race, String size, String pircture) {
+        this.name = name;
+        this.species = species;
+        this.race = race;
+        this.size = size;
+        this.pircture = pircture;
+    }
+
+    // --------- Columnas___________________
     @Id
     @Column(name = "pet_id",unique = true)
     private String pet_id;
 
-    @Column(name = "microchip",nullable = false, unique = true)
+    @Column(name = "microchip", unique = true)
     private String microchip;
 
     @Column(name = "name",nullable = false)
@@ -32,7 +58,7 @@ public class Pet {
     @Column(name = "sex",nullable = false)
     private String sex;
 
-    @Column(name = "pircture",nullable = false)
+    @Column(name = "pircture")
     private String pircture;
 
     @Column(name = "owner_id",nullable = false)

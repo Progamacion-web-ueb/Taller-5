@@ -10,7 +10,30 @@ import javax.persistence.*;
 })
 
 public class Vet {
+    // ---------Constructrores_______________
 
+
+    public Vet() {
+    }
+
+    public Vet(String name) {
+        this.name = name;
+    }
+
+    public Vet(String username, String name, String address, String neghborhood) {
+        this.username = username;
+        this.name = name;
+        this.address = address;
+        this.neghborhood = neghborhood;
+    }
+
+    public Vet(String name, String address, String neghborhood) {
+        this.name = name;
+        this.address = address;
+        this.neghborhood = neghborhood;
+    }
+
+    // --------- Columnas_______________
     @Id
     @JoinColumn(name = "username",table="UserApp")
     @Column(name = "username")
