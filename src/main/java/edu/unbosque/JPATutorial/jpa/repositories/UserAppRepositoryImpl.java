@@ -1,5 +1,6 @@
 package edu.unbosque.JPATutorial.jpa.repositories;
 
+import edu.unbosque.JPATutorial.jpa.entities.Author;
 import edu.unbosque.JPATutorial.jpa.entities.UserApp;
 
 import javax.persistence.EntityManager;
@@ -21,12 +22,15 @@ public class UserAppRepositoryImpl implements UserAppRepository{
 
     @Override
     public Optional<UserApp> findByUserName(String username) {
-        return Optional.empty();
+        UserApp userApp = entityManager.find(UserApp.class, username);
+        return userApp != null ? Optional.of(userApp) : Optional.empty();
     }
+
 
     @Override
     public Optional<UserApp> findByRole(String role) {
-        return Optional.empty();
+        UserApp userApp = entityManager.find(UserApp.class, role);
+        return userApp != null ? Optional.of(userApp) : Optional.empty();
     }
 
     @Override
@@ -44,6 +48,15 @@ public class UserAppRepositoryImpl implements UserAppRepository{
 
     @Override
     public void deleteByUserName(String username) {
+        UserApp userApp = entityManager.find(UserApp.class, username);
+        if (userApp != null) {
+            try {
+                entityManager.remove(userApp);
+                entityManager.getTransaction().commit();
 
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

@@ -31,10 +31,6 @@ public class Author {
         this.name = name;
     }
 
-    public Author(Integer authorId, String name) {
-        this.authorId = authorId;
-        this.name = name;
-    }
 
     public Integer getAuthorId() {
         return authorId;

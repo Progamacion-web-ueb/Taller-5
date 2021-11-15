@@ -15,7 +15,7 @@ public class Pet {
     public Pet() {
     }
 
-    public Pet(String pet_id, String microchip, String name, String species, String race, String size, String sex, String pircture, String owner_id) {
+    public Pet(String pet_id, Integer microchip, String name, String species, String race, String size, String sex, String pircture, String owner_id) {
         this.pet_id = pet_id;
         this.microchip = microchip;
         this.name = name;
@@ -40,8 +40,9 @@ public class Pet {
     @Column(name = "pet_id",unique = true)
     private String pet_id;
 
+    @GeneratedValue
     @Column(name = "microchip", unique = true)
-    private String microchip;
+    private Integer microchip;
 
     @Column(name = "name",nullable = false)
     private String name;
@@ -76,11 +77,11 @@ public class Pet {
         this.pet_id = pet_id;
     }
 
-    public String getMicrochip() {
+    public Integer getMicrochip() {
         return microchip;
     }
 
-    public void setMicrochip(String microchip) {
+    public void setMicrochip(Integer microchip) {
         this.microchip = microchip;
     }
 

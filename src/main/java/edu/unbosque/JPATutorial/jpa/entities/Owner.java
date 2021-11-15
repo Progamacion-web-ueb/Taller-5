@@ -20,7 +20,7 @@ public class Owner {
         this.name = name;
     }
 
-    public Owner(String username, String person_id, String name, String address, String neghborhood) {
+    public Owner(String username, Integer person_id, String name, String address, String neghborhood) {
         this.username = username;
         this.person_id = person_id;
         this.name = name;
@@ -36,12 +36,13 @@ public class Owner {
 
     // --------- Columnas_______________
     @Id
-    @JoinColumn(name = "username",table="UserApp")
-    @Column(name = "username")
+    @JoinColumn(name = "username")
     private String username;
 
+
+    @GeneratedValue
     @Column(name = "person_id",nullable = false, unique = true)
-    private String person_id;
+    private Integer person_id;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -52,8 +53,11 @@ public class Owner {
     @Column(name = "neghborhood", nullable = false)
     private String neghborhood;
 
+    @OneToOne(mappedBy = "owner")
+    private UserApp userapp;
 
-    // ---------getter y setter_______________
+
+// ---------getter y setter_______________
 
     public String getUsername() {
         return username;
@@ -63,11 +67,11 @@ public class Owner {
         this.username = username;
     }
 
-    public String getPerson_id() {
+    public Integer getPerson_id() {
         return person_id;
     }
 
-    public void setPerson_id(String person_id) {
+    public void setPerson_id(Integer person_id) {
         this.person_id = person_id;
     }
 

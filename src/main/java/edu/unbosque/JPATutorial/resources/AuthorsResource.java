@@ -1,6 +1,7 @@
 package edu.unbosque.JPATutorial.resources;
 
 import edu.unbosque.JPATutorial.resources.pojos.Author;
+import edu.unbosque.JPATutorial.services.AuthorService;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
@@ -30,7 +31,8 @@ public class AuthorsResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response create(Author author) {
 
-        author.setAuthorId(3);
+        AuthorService authorService = new AuthorService();
+        authorService.saveAuthor(author.getName());
 
         return Response.status(Response.Status.CREATED)
                 .entity(author)

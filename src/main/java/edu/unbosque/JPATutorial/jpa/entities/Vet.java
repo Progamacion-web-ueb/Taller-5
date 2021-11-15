@@ -35,8 +35,7 @@ public class Vet {
 
     // --------- Columnas_______________
     @Id
-    @JoinColumn(name = "username",table="UserApp")
-    @Column(name = "username")
+    @JoinColumn(name = "username")
     private String username;
 
     @Column(name = "name",nullable = false, unique = true)
@@ -47,6 +46,9 @@ public class Vet {
 
     @Column(name = "neghborhood",nullable = false, unique = true)
     private String neghborhood;
+
+    @OneToOne(mappedBy = "vet")
+    private UserApp userapp;
 
     // ---------getter y setter_______________
 

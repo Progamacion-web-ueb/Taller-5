@@ -1,34 +1,20 @@
 package edu.unbosque.JPATutorial.jpa.entities;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "UserApp") // Optional
+@Table(name = "userApp") // Optional
 @NamedQueries({
         @NamedQuery(name = "UserApp.findByUserName",
                 query = "SELECT a FROM UserApp a WHERE a.username = :username")
 })
 public class UserApp {
-    // ---------Constructrores_______________
-
-
-    public UserApp() {
-    }
-
-    public UserApp(String email) {
-        this.email = email;
-    }
-
-    public UserApp(String username, String pasword, String email, String role) {
-        this.username = username;
-        this.pasword = pasword;
-        this.email = email;
-        this.role = role;
-    }
 
     // --------- Columnas___________________
+
     @Id
     @Column(name = "username")
     private String username;
@@ -41,6 +27,56 @@ public class UserApp {
 
     @Column(name = "role", nullable = false)
     private String role;
+
+    @OneToOne(orphanRemoval = true)
+    @JoinColumn(name = "username")
+    private Owner owner;
+
+    @OneToOne(orphanRemoval = true)
+    @JoinColumn(name = "vet_username")
+    private Vet vet;
+
+    @OneToOne(orphanRemoval = true)
+    @JoinColumn(name = "official_username")
+    private Official official;
+
+    public Official getOfficial() {
+        return official;
+    }
+
+    public void setOfficial(Official official) {
+        this.official = official;
+    }
+
+    public Vet getVet() {
+        return vet;
+    }
+
+    public void setVet(Vet vet) {
+        this.vet = vet;
+    }
+
+    public Owner getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Owner owner) {
+        this.owner = owner;
+    }
+
+// ---------Constructrores_______________
+
+
+    public UserApp() {
+    }
+
+
+    public UserApp(String username, String pasword, String email, String role) {
+        this.username = username;
+        this.pasword = pasword;
+        this.email = email;
+        this.role = role;
+    }
 
 
     // ---------getter y setter_______________

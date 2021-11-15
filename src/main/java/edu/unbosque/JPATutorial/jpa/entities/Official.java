@@ -27,12 +27,14 @@ public class Official {
 
     // --------- Columnas_______________
     @Id
-    @JoinColumn(name = "username",table="UserApp")
-    @Column(name = "username")
+    @JoinColumn(name = "username")
     private String username;
 
     @Column(name = "name", nullable = false)
     private String name;
+
+    @OneToOne(mappedBy = "official")
+    private UserApp userapp;
 
 
     // ---------getter y setter_______________
